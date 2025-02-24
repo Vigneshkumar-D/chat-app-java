@@ -8,7 +8,6 @@ import com.chat_app.repository.chat.ChatRepository;
 import com.chat_app.repository.user.UserRepository;
 import com.chat_app.service.chat.ChatService;
 import com.chat_app.utils.ExceptionHandler.ExceptionHandlerUtil;
-//import com.chat_app.utils.user.JWTUtil;
 import com.chat_app.utils.user.JWTUtil;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;

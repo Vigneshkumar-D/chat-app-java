@@ -56,7 +56,6 @@ public class MessageService {
 
             Set<User> recipient = new HashSet<>();
             for(User user : messageDto.getRecipient()) {
-
                     User existingUser = userRepository.findById(user.getId())
                         .orElseThrow(() -> new RuntimeException("Recipient not found"));
                 if(existingUser!=null) recipient.add(existingUser);
@@ -74,17 +73,14 @@ public class MessageService {
             Message savedMessage = messageRepository.save(message);
 
             if (messageDto.getChat().getIsGroup()) {
-                System.out.println("upchat2 "+message.getChat().getId());
                 messagingTemplate.convertAndSend(
                         "/topic/chat/group/" + messageDto.getChat().getId(),
                         savedMessage
                 );
             } else {
-                System.out.println("upchat 1 "+message.getChat().getId());
                 User user = messageDto.getRecipient().iterator().next();
-                messagingTemplate.convertAndSendToUser(
-                        user.getId().toString(),
-                        "/queue/message/" + messageDto.getChat().getId(),
+                messagingTemplate.convertAndSend(
+                        "/queue/message/" + user.getId() + messageDto.getChat().getId(),
                         savedMessage
                 );
             }

@@ -6,6 +6,6 @@ RUN mvn clean package -DskipTests
 
 # Use a slim JDK image for the final stage
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /app/target/chat-app-0.0.1-SNAPSHOT.jar chat-app.jar
+COPY --from=build /app/target/chat-app-1.0-SNAPSHOT.jar chat-app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "chat-app.jar"]

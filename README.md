@@ -130,7 +130,7 @@ The server will run on: **`http://localhost:4001`**
 
 ## 🔥 WebSocket Integration Example (Frontend)
 To connect to the WebSocket in a **React frontend**, use **SockJS & StompJS**:
-```javascript
+```
 import { Client } from "@stomp/stompjs";
 import SockJS from "sockjs-client";
 
@@ -148,4 +148,19 @@ const stompClient = new Client({
     }
 });
 
-stompClient.activate(); ```
+stompClient.activate();
+```
+
+## 🔑 Default Credentials
+
+For testing purposes, you can use the following default credentials:
+
+| Username       | Password       |
+|--------------|----------------|
+| Vignesh      | Vignesh@123     |
+| John Doe     | john.doe@123    |
+| Jane Smith   | jane.smith@123  |
+| Alice Johnson| Alice@123       |
+| Robert Brown | Robert@123      |
+
+

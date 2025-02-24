@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: vigneshkumard2797/retail-edge:latest
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_USERNAME: chat_app_xx2k_user
+      SPRING_DATASOURCE_PASSWORD: 7ALfodDEB5k3Cx2A2RjQlr3KMo8uLsen
+      SPRING_DATASOURCE_URL: postgresql://chat_app_xx2k_user:7ALfodDEB5k3Cx2A2RjQlr3KMo8uLsen@dpg-cusl315svqrc73du1nng-a:oregon-postgres:render:com/chat_app_xx2k
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    ports:
+      - "8080:8080"
+    restart: on-failure
+    depends_on:
+      - postgres
+      - kafka
+
+  postgres:
+    image: postgres:12.19-alpine3.20
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: paraSF2797!
+      POSTGRES_DB: chat-app
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:

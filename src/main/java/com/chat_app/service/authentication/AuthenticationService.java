@@ -116,8 +116,7 @@ public class AuthenticationService {
             resetToken.setUser(user);
 
             tokenRepository.save(resetToken);
-            String rootUrl = request.getRequestURL().toString().replace(request.getRequestURI(), "") + request.getContextPath();
-
+            String rootUrl = "https://my-blinkchat-app.netlify.app";
             String body = "<html>" +
                     "<head>" +
                     "<style>" +

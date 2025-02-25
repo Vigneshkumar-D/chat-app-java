@@ -80,7 +80,7 @@ public class MessageService {
             } else {
                 User user = messageDto.getRecipient().iterator().next();
                 messagingTemplate.convertAndSend(
-                        "/queue/message/" + user.getId() + messageDto.getChat().getId(),
+                        "/queue/message/" + user.getId()+ "/" + messageDto.getChat().getId(),
                         savedMessage
                 );
             }
